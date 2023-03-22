@@ -17,31 +17,21 @@ export const Form = () => {
 
     const handlePressSearchDni = async () => {
         try {
-            const resp = await fetch(`http://localhost:4000/dni/${inputDni}`, {
-                method: "GET",
-            });
+            const resp = await fetch(`http://localhost:4000/dni/${inputDni}`);
             const data = await resp.json();
-            if (data.data) {
-                setRptaDni(data.data.nombre);
-            } else {
-                alert(data.error);
-            }
+            if (data.data) setRptaDni(data.data.nombre);
+            else  alert(data.error);
+            
         } catch (error) {
             console.log(error);
         }
     };
 
     const handlePressSearchRuc = async () => {
-        const resp = await fetch(`http://localhost:4000/ruc/${inputRuc}`, {
-            method: "GET",
-        });
+        const resp = await fetch(`http://localhost:4000/ruc/${inputRuc}`);
         const data = await resp.json();
-        console.log(data);
-        if (data.data) {
-            setRptaRuc(data.data.nombre);
-        } else {
-            alert(data.error.error);
-        }
+        if (data.data) setRptaRuc(data.data.nombre) 
+        else alert(data.error.error);
     };
 
     return (
